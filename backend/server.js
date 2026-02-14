@@ -25,7 +25,7 @@ app.get("/status", (req, res) => {
   res.json({
     backend: "ok",
     database: "ok",
-    llm: process.env.OPENAI_API_KEY ? "ok" : "missing key"
+    llm: "mocked"
   });
 });
 
