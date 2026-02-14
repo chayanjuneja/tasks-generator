@@ -295,23 +295,46 @@ const inputStyle = {
           <h2>Tasks</h2>
           <ul>
             {result.tasks.map((task, i) => (
-              <li key={i}>
-                <input
-  value={task}
-  onChange={(e) => {
-    const updated = { ...result };
-    updated.tasks[i] = e.target.value;
-    setResult(updated);
-  }}
-  style={{
-    width: "100%",
-    padding: 8,
-    borderRadius: 6,
-    border: "1px solid #e5e7eb",
-  }}
-/>
-              </li>
-            ))}
+  <li key={i} style={{ display: "flex", gap: "8px", marginBottom: "6px" }}>
+    <input
+      value={task}
+      onChange={(e) => {
+        const updated = { ...result };
+        updated.tasks[i] = e.target.value;
+        setResult(updated);
+      }}
+      style={{ flex: 1 }}
+    />
+
+    <button
+      onClick={() => {
+        if (i === 0) return;
+        const updated = { ...result };
+        [updated.tasks[i - 1], updated.tasks[i]] = [
+          updated.tasks[i],
+          updated.tasks[i - 1],
+        ];
+        setResult(updated);
+      }}
+    >
+      ↑
+    </button>
+
+    <button
+      onClick={() => {
+        if (i === result.tasks.length - 1) return;
+        const updated = { ...result };
+        [updated.tasks[i + 1], updated.tasks[i]] = [
+          updated.tasks[i],
+          updated.tasks[i + 1],
+        ];
+        setResult(updated);
+      }}
+    >
+      ↓
+    </button>
+  </li>
+))}
           </ul>
         </div>
       )}
