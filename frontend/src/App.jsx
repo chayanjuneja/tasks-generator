@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Routes, Route, Link } from "react-router-dom";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://tasks-generator-backend-rar9.onrender.com";
 
 function StatusPage() {
   const [status, setStatus] = useState(null);
